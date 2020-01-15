@@ -1,0 +1,51 @@
+// Travis Eiler
+// CPW 245, Winter '20
+// Assignment #1: Big O Notation
+// Due: Jan 08, 2020
+
+	Notation		Name
+	O( 1 )			constant
+	O( log(n) )		logarithmic
+	O( n )			linear
+	O( n log(n) )	lineararithmic
+	O( n^2 ) 		quadratic
+	O( n^3 ) 		qubic
+	O( n^c ) 		polynomial
+	O( c^n ) 		exponential
+
+	
+#1: O( n ) linear:
+	Every element of the array must be checked to see if it equals value.
+	If value is not in the array and the size of the array is doubled,
+	the number of steps to attempt to find value is doubled.
+
+#2: O( n ) linear:
+	Contains in the if statement is linear. The for loop only executes 
+	for 10 elements regardless of the array size, this does not affect
+	the time complexity.
+
+#3: O( n log(n) ) lineararithmic:
+	The for loop does not process every element of the array. N for this
+	element is logarithmic, however the contains method in the if statement
+	is linear.
+
+#4: O( n^2 ) quadratic
+	Two nested for loops, as the size of the array increase the number of 
+	executions is squared.
+
+#5: O( n ) linear
+	The if statement will only be executed once, worst case scenario, but
+	the while loop steps through every value of n to zero.
+
+#6: O( log(n) ) logarithmic
+	The if statement will only be executed once, worst case scenario, but
+	the while loop step is half of n.
+
+#7: O( n^3 ) qubic
+	Three nested while loops, as the size of the n increases the number of
+	steps for z, y, & x to reach zero is cubed.
+
+#8: O( n^3 ) quadratic
+	Two nested for loops, as the value of n increases the number of 
+	steps executed is squared, and list.remove(0) reorders the entire list
+	and runs in n time.
