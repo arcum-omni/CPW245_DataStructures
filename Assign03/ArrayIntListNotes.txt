@@ -1,0 +1,12 @@
+ArrayIntList
+	add(value)		add(index, value)
+	get(index)		set(index, value)
+	size()			
+	remove(index)	
+	indexOf(value)	
+	toString()		
+
+	isEmpty()		
+	contains(value)	
+	
+	Arrays.copyOf( list, size )
