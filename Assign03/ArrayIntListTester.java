@@ -41,7 +41,7 @@ public class ArrayIntListTester {
         System.out.println("list6 = " + list6);
         
         list5.addAll( 4, list6 );
-        System.out.println("after list5.addAll(4,list6), = " + list5);
+        System.out.println("list5 after list5.addAll(4,list6) = " + list5);
         
         // should return true
         System.out.println("containsAll: " + list.containsAll(list2) );
