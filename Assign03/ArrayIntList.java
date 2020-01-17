@@ -5,7 +5,7 @@
 //
 // The purpose of this program is to manually reproduce methods from Java Class ArrayList<E>.
 // specifically to reinforce our understanding of ArrayIntList.
-
+//
 // Class ArrayIntList can be used to store a list of integers.
 
 import java.util.*;
