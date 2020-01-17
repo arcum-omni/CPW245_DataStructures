@@ -173,14 +173,12 @@ public class ArrayIntList {
     }
     
     // Method #1
-    // public void addAll( int index, ArrayIntList list )
-    // https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html
+    // referred to https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html
+    // to determine desired functionality
     public void addAll( int index, ArrayIntList list ) {
         ensureCapacity(size + list.size);
-        int inheritedSize = size();
-        int incomingListSize = list.size();
         int j = 0;
-        for(int i = index; i<incomingListSize+index; i++){
+        for(int i = index; i<list.size()+index; i++){
             add(i,list.get(j));
             j++;
         }
@@ -203,7 +201,6 @@ public class ArrayIntList {
         if(this.size != list.size) {
             return false; 
         }
-
         for(int i=0; i<list.size; i++) {
             if(elementData[i] != list.get(i)) {
                 return false;
