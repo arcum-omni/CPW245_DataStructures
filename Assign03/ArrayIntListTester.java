@@ -25,7 +25,7 @@ public class ArrayIntListTester {
         list.addAll(list2);
         System.out.println("after addAll, list = " + list);
         
-        // Extra Credit
+        // Extra Credit Test Code
         int[] data5 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
         ArrayIntList list5 = new ArrayIntList();
         for (int n : data5) {
