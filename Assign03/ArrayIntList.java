@@ -203,6 +203,7 @@ public class ArrayIntList {
         if(this.size != list.size) {
             return false; 
         }
+
         for(int i=0; i<list.size; i++) {
             if(elementData[i] != list.get(i)) {
                 return false;
