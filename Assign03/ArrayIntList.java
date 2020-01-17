@@ -173,24 +173,19 @@ public class ArrayIntList {
     }
     
     // Method #1
-    // public void addAll( int index, ArrayIntList list )
+    // to determine desired functionality I referred to 
     // https://docs.oracle.com/javase/7/docs/api/java/util/ArrayList.html
     public void addAll( int index, ArrayIntList list ) {
-        ensureCapacity(size + list.size);
-        int inheritedSize = size();
-        int incomingListSize = list.size();
-        int j = 0;
-        for(int i = index; i<incomingListSize+index; i++){
-            add(i,list.get(j));
-            j++;
+        ensureCapacity(this.size + list.size);
+        for(int i=0; i<list.size; i++) {
+            add(i+index, list.elementData[i]);
         }
     }
     
     // Method #2
-    // public boolean containsAll( ArrayIntList list )
     public boolean containsAll( ArrayIntList list ) {
         for(int i=0; i<list.size; i++) {
-            if(!contains(list.get(i) )) {
+            if(!contains(list.elementData[i] )) {
                 return false;
             }
         } 
@@ -198,14 +193,12 @@ public class ArrayIntList {
     }
     
     // Method #3
-    // public boolean equals( ArrayIntList list )
     public boolean equals( ArrayIntList list ) {
         if(this.size != list.size) {
             return false; 
         }
-
         for(int i=0; i<list.size; i++) {
-            if(elementData[i] != list.get(i)) {
+            if(elementData[i] != list.elementData[i]) {
                 return false;
             }
         }
@@ -213,14 +206,13 @@ public class ArrayIntList {
     }
     
     // Method #4
-    // public int lastIndexOf( int value )
     public int lastIndexOf( int value ) {
-        int end=-1;
-        for(int i=size()-1; i>=0; i--) {
+        int ifNotFound = -1;
+        for(int i=this.size()-1; i>=0; i--) {
             if( elementData[i] == value) {
                 return i;
             }
         }
-        return end;
+        return ifNotFound;
     }
 }
