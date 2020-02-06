@@ -4,6 +4,7 @@
 // Due: Feb 05, 2020
 
 
+
 // BJP4 Exercise 16.13: transferFrom
 public void transferFrom (LinkedIntList list) {
     if (front == null) {
@@ -18,6 +19,7 @@ public void transferFrom (LinkedIntList list) {
     }
     list.front = null;
 }
+
 
 
 // BJP4 Exercise 16.14: removeAll
@@ -35,6 +37,7 @@ public void removeAll (int value) {
         }
     } 
 }
+
 
 
 // BJP4 Exercise 16.15: equals
