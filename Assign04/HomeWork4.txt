@@ -5,7 +5,7 @@
 
 
 // BJP4 Exercise 16.13: transferFrom
-public void transferFrom(LinkedIntList list) {
+public void transferFrom (LinkedIntList list) {
     if (front == null) {
         front = list.front;
     }
@@ -21,7 +21,7 @@ public void transferFrom(LinkedIntList list) {
 
 
 // BJP4 Exercise 16.14: removeAll
-public void removeAll(int value) {
+public void removeAll (int value) {
     while (front != null && front.data == value) {
         front = front.next;
     }
@@ -38,23 +38,16 @@ public void removeAll(int value) {
 
 
 // BJP4 Exercise 16.15: equals
-public boolean equals2(LinkedIntList list) {
-    ListNode current1 = front;
-    ListNode current2 = list.front; 
-    if (current1 == null && current2 == null) {
-        return true;
-    }
-    else if (current1 != null && current2 != null) {
-        while (current1 != null && current2 != null) {
-            if (current1.data != current2.data) {
-                return false;
-            }
-            else {
-                current1 = current1.next;
-                current2 = current2.next;
-            }
-        }
-        return current1 == null && current2 == null;
-    }
-    return false;
+public boolean equals2 (LinkedIntList secondList) {
+    ListNode thisList = front;
+    ListNode incomingList = secondList.front;
+    while (thisList != null || incomingList != null) {
+        if (thisList == null || incomingList == null)
+            return false;
+        if (thisList.data != incomingList.data)
+            return false;
+        thisList = thisList.next;
+        incomingList = incomingList.next;
+    }
+    return true;
 }
