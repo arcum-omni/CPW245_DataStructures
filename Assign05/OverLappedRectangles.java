@@ -55,7 +55,15 @@ public class OverLappedRectangles {
      */
     public void moveToTop( Point p ) {
         
-    //** My Code Below **********************************************************************
+        // Your code goes here.
+        // You can use the ideas from Chpater 16, in particular
+        // the index code can be adapted to this problem by adding
+        // some methods to this OverLappedRectangles class.
+        // Or you can do the following:
+        // You get 10% extra credit if you do this method entirely 
+        // by manipulating pointers as we did in the Lab.
+
+    /*** My Code Below, Section i *********************************************************/
         
         // Boolean status for if rectangle is located
         boolean rectLocated = false;
@@ -100,11 +108,11 @@ public class OverLappedRectangles {
             current = current.next;
         }
             
-    //** My Code Above **********************************************************************
+    /*** My Code Above, Section i *********************************************************/
     
     }
     
-    //** My Code Below **********************************************************************
+    /*** My Code Below, Section ii ********************************************************/
     
     /**
      * Determine if points are contained within the rectangle. 
@@ -123,7 +131,7 @@ public class OverLappedRectangles {
         return false;
     }
     
-    //** My Code Above **********************************************************************
+    /*** My Code Above, Section ii ********************************************************/
    
     /**
      * Add r to top of z-list.
