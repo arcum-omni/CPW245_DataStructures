@@ -1,0 +1,37 @@
+Quiz 4: BJP 16
+
+16.1	What is the difference between a linked list and an array list?  How are they similar?
+		An array list stores all its elements in a single large array, a linked list stores each element
+		in its own container called a node.  The nodes are linked by reference.  They are similar in that
+		they both behave the similarily to the client in terms of methods to add remove, get and locate elements.
+
+16.2	What is the difference of a linked node and a linked list?  How are they related and connected?
+		A node is a small object that stores a single element of a linked list.
+		The list object stores references to a nodes such as the front of a list.
+		The front container contains a chain of references connecting each element in the list.
+
+16.3	What value is stored at the next field of the last node of a list?  What value will a node's next field have if none is specifiec?
+		null, null
+
+16.4	What happens if you, or the client, try to go past the last element in a linked list?  Be specific.
+		The program will throw a null pointer exception
+
+16.5	list --> [1|-]->[2|/]	list.next = new ListNode(3);
+		list --> [1|-]->[3|/]
+
+16.6	list --> [1|-]->[2|/]	list.next = new ListNode(3, list.next);
+		list --> [1|-]->[3|-]->[2|/]
+
+16.7	list --> [1|-]->[2|-]->[3|/]	list.next = new ListNode(4, list.next.next);
+		list --> [1|-]->[4|-]->[3|/]
+
+16.8	list --> [1|-]->[2|-]->[3|/]	list.next.next = null;
+		list --> [1|-]->[2|/]
+		
+16.22	list --> [7|-]-> ... ->[16|/]  change all nodes to store 42  list --> [42|-]-> ... ->[42|/]
+
+		ListNode current = list;
+				while(current != null){
+					current.data = 42;
+					current = current.next;
+				}
