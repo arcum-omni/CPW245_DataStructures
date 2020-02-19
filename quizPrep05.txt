@@ -1,0 +1,61 @@
+Quiz 5: BJP 17
+
+BJP4 Self-Check 17.4
+              +---+
+              | 3 |
+              +---+
+             /     \
+         +---+     +---+
+         | 5 |     | 2 |
+         +---+     +---+
+        /         /     \
+    +---+     +---+     +---+
+    | 1 |     | 4 |     | 6 |
+    +---+     +---+     +---+
+
+     pre-order:  3,5,1,2,4,6
+      in-order:  1,5,3,4,2,6
+    post-order:  1,5,4,6,2,3
+
+
+BJP4 Self-Check 17.19
+    Suppose that the following elements are added in the specified order
+	to an empty binary search tree:
+    Kirk, Spock, Scotty, McCoy, Chekov, Uhuru, Sulu, Khaaaan
+
+              Kirk
+           /        \
+    Chekov           Spock
+          \         /     \
+      Khaaaan    Scotty  Uhuru
+                /        /
+             McCoy     Sulu
+
+     pre-order:  kirk,chekov,khaaaan,spock,scotty,mccoy,uhuru,sulu
+      in-order:  chekov,khaaaan,kirk,mccoy,scotty,spock,sulu,uhuru
+    post-order:  khaaaan,chekov,mccoy,scotty,sulu,uhuru,spock,kirk
+
+
+BJP4 Self-Check 17.24
+	Consider the following implementation of the contains method. How
+	does it differ from the one we showed in 17.4?
+	Is it better or worse, & why?
+	
+	private bool contains (IntTreeNode rood, int value) {
+		if (root == null) {
+			return false;
+		}
+		else if (value == root.data) {
+			return true;
+		}
+		else {
+			return contains (root.left, value)
+				|| contains (root.right, value);
+		}
+	}
+
+	This second version of contains is much less efficient than the one 
+	written in the chapter. It goes both to the left and to the right 
+	recursively to find the value, but this does not take advantage of 
+	the pre-sorted tree. It will have linear O(N) runtime rather than 
+	the faster O(log N) desired runtime of our original method.
