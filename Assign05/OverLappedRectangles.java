@@ -53,85 +53,72 @@ public class OverLappedRectangles {
      * @param p the point clicked by the mouse. Move the clicked rectangle to the top.
      
      */
-    public void moveToTop( Point p ) {
-        
-        // Your code goes here.
-        // You can use the ideas from Chpater 16, in particular
-        // the index code can be adapted to this problem by adding
-        // some methods to this OverLappedRectangles class.
-        // Or you can do the following:
-        // You get 10% extra credit if you do this method entirely 
-        // by manipulating pointers as we did in the Lab.
 
-    /*** My Code Below, Section i *********************************************************/
+    public void moveToTop( Point p ) {
+            
+        // Boolean status if rectangle is clicked
+        boolean clickedRectangle = false;
         
-        // Boolean status for if rectangle is located
-        boolean rectLocated = false;
-        
-        // Create current RN from private RN bottom
-        RectangleNode current = bottom;
+        // Create current RectangleNode from private RectangleNode bottom
+        RectangleNode current = bottom; // front
         
         // Create null RectangleNodes
-        RectangleNode beforeCurrent = null;        
-        RectangleNode updateBeforeCurrent = null;
-        RectangleNode updateCurrent = null;      
+        RectangleNode previous = null;
+        RectangleNode revisedPrevious = null;
+        RectangleNode revised = null;
         
         // Check for a null list initially
         while (current != null) {
-            ColorRectangle rectangle = current.get();
-            // Check if rectLocated passes contains checks
-            if (contains(p, rectangle)) {                
-                updateBeforeCurrent = beforeCurrent;
-                updateCurrent = current;
-                rectLocated = true;
+            ColorRectangle rectangle = current.rect;
+            
+            // Check if clickedRectangle contains point p
+            if (isContained(p, rectangle)) {
+                revisedPrevious = previous;
+                revised = current;
+                clickedRectangle = true;
             }
-            if (current.next == null) {
+            
+            // If current.next is null, we have found the last rectangle that contained p
+            else if (current.next == null) {
                 break;
             }
-            beforeCurrent = current;
+            
+            previous = current;
             current = current.next;
         }
         
-        current = updateCurrent;
-        beforeCurrent = updateBeforeCurrent;
-        if (rectLocated) {
+        current = revised;
+        previous = revisedPrevious;
+        
+        if (clickedRectangle) {
+        
             if (current == bottom) {
                 bottom = bottom.next;
-            } 
+            }
+            
             else {
-                beforeCurrent.next = current.next;
-            }    
-            addRect(current.get());
+                previous.next = current.next;
+            }
+            addRect(current.rect);
         }
+        
         current = bottom;
+        
         while (current != null) {
             current = current.next;
         }
-            
-    /*** My Code Above, Section i *********************************************************/
-    
     }
     
-    /*** My Code Below, Section ii ********************************************************/
-    
     /**
-     * Determine if points are contained within the rectangle. 
+     * Determine if point is contained within the rectangle. 
      *
      * @param p the point clicked by the mouse. Move the clicked rectangle to the top.
      * @param r the colorrectangle to be checked
-     * @return true if point is contained, false otherwise.
+     * @return true if point is contained, else false.
      */
-    public boolean contains(Point p, ColorRectangle r) {
-        if ((p.getX() >= r.getX()) 
-             && (p.getX() <= r.getX() + r.getWidth()) 
-             && (p.getY() >= r.getY()) 
-             && (p.getY() <= r.getY() + r.getHeight())) {
-            return true;
-        }
-        return false;
+    public boolean isContained(Point p, ColorRectangle r) {
+        return (p.getX() >= r.getX()) && (p.getX() <= r.getX() + r.getWidth()) && (p.getY() >= r.getY()) && (p.getY() <= r.getY() + r.getHeight());
     }
-    
-    /*** My Code Above, Section ii ********************************************************/
    
     /**
      * Add r to top of z-list.
