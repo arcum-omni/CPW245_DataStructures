@@ -1,0 +1,45 @@
+// Travis Eiler
+// CPW 245, Winter '20
+// Assignment #6: Trees
+// Due: Feb 26, 2020
+
+
+
+// BJP4 Exercise 17.4: countEvenBranches
+public int countEvenBranches() {
+    return countEvenBranches(overallRoot);
+}
+
+public int countEvenBranches(IntTreeNode root) {
+    if (root == null) {
+        return 0;
+    } else if (root.left == null && root.right == null) {
+        return 0;
+    } else {
+    
+        if (root.data % 2 == 0) {
+            return 1 + countEvenBranches(root.left) + countEvenBranches(root.right);
+        } else {
+            return countEvenBranches(root.left) + countEvenBranches(root.right);
+        }  
+    }
+}
+
+
+
+// BJP4 Exercise 17.7: isFull
+public boolean isFull() {
+    return isFull(overallRoot);
+}
+
+public boolean isFull(IntTreeNode root) {
+    if (root == null) {
+        return true;
+    } else if (root.left == null && root.right != null) {
+        return false;
+    } else if (root.right == null && root.left != null) {
+        return false;
+    } else {
+        return isFull(root.left) && isFull(root.right);
+    }
+}
