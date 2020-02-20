@@ -18,7 +18,7 @@ import java.util.*;
  * @author Ken Meerdink
  * @version CPW 245 Winter 2017 Programming Assignment 5
  *
- * @author Travis Eiler
+ * @author Travis Eiler, Student
  * @version CPW 245 Winter 2020 Programming Assignment 5
  *
  */
@@ -43,7 +43,6 @@ public class OverLappedRectangles {
     }
    
     /**
-     *
      * Point p was clicked, move the correct rectangle to the top.
      * Note that, in order to tell which rectangle was clicked,
      * we must examine all the rectangles from lowest index to highest index
@@ -51,9 +50,7 @@ public class OverLappedRectangles {
      * linked list.
      *
      * @param p the point clicked by the mouse. Move the clicked rectangle to the top.
-     
      */
-
     public void moveToTop( Point p ) {
             
         // Boolean status if rectangle is clicked
@@ -64,7 +61,7 @@ public class OverLappedRectangles {
         
         // Create null RectangleNodes
         RectangleNode previous = null;
-        RectangleNode revisedPrevious = null;
+        RectangleNode revisePrevious = null;
         RectangleNode revised = null;
         
         // Check for a null list initially
@@ -73,23 +70,26 @@ public class OverLappedRectangles {
             
             // Check if clickedRectangle contains point p
             if (isContained(p, rectangle)) {
-                revisedPrevious = previous;
+                revisePrevious = previous;
                 revised = current;
                 clickedRectangle = true;
             }
             
-            // If current.next is null, we have found the last rectangle that contained p
+            // stop the while loop after iterating through the entire LinkedList
             else if (current.next == null) {
                 break;
             }
             
+            // iterating through the LinkedList
             previous = current;
             current = current.next;
         }
         
+        // Revise References
         current = revised;
-        previous = revisedPrevious;
+        previous = revisePrevious;
         
+        // Find upermost rectangle that was clicked, and move to top
         if (clickedRectangle) {
         
             if (current == bottom) {
@@ -100,12 +100,6 @@ public class OverLappedRectangles {
                 previous.next = current.next;
             }
             addRect(current.rect);
-        }
-        
-        current = bottom;
-        
-        while (current != null) {
-            current = current.next;
         }
     }
     
