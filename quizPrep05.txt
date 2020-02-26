@@ -23,13 +23,21 @@ BJP4 Self-Check 17.19
 	to an empty binary search tree:
     Kirk, Spock, Scotty, McCoy, Chekov, Uhuru, Sulu, Khaaaan
 
-        ___________Kirk__________
-       /                         \
-    Chekov                     _Spock_
-          \                   /       \
-        Khaaaan           Scotty       Uhuru
-                         /            /
-                      McCoy        Sulu
+                          +---------+
+                          |  Kirk   |
+        __________________+---------+___________________
+       /                                                \
+  +---------+                                     +---------+
+  | Chekov  |                                     |  Spock  |
+  +---------+_______                        ______+---------+_______
+                    \                      /                        \
+              +---------+             +---------+             +---------+
+              | Khaaaan |             | Scotty  |             |  Uhuru  |
+              +---------+             +---------+             +---------+
+                                     /                       /
+                                +---------+             +---------+
+                                |  McCoy  |             |  Sulu   |
+                                +---------+             +---------+
 
      pre-order:  kirk,chekov,khaaaan,spock,scotty,mccoy,uhuru,sulu
       in-order:  chekov,khaaaan,kirk,mccoy,scotty,spock,sulu,uhuru
