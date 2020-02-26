@@ -23,13 +23,13 @@ BJP4 Self-Check 17.19
 	to an empty binary search tree:
     Kirk, Spock, Scotty, McCoy, Chekov, Uhuru, Sulu, Khaaaan
 
-              Kirk
-           /        \
-    Chekov           Spock
-          \         /     \
-      Khaaaan    Scotty  Uhuru
-                /        /
-             McCoy     Sulu
+        ___________Kirk__________
+       /                         \
+    Chekov                     _Spock_
+          \                   /       \
+        Khaaaan           Scotty       Uhuru
+                         /            /
+                      McCoy        Sulu
 
      pre-order:  kirk,chekov,khaaaan,spock,scotty,mccoy,uhuru,sulu
       in-order:  chekov,khaaaan,kirk,mccoy,scotty,spock,sulu,uhuru
@@ -38,24 +38,38 @@ BJP4 Self-Check 17.19
 
 BJP4 Self-Check 17.24
 	Consider the following implementation of the contains method. How
-	does it differ from the one we showed in 17.4?
+	does it differ from the one we showed in Section 17.4?
 	Is it better or worse, & why?
 	
 	private bool contains (IntTreeNode rood, int value) {
-		if (root == null) {
-			return false;
-		}
-		else if (value == root.data) {
-			return true;
-		}
-		else {
-			return contains (root.left, value)
-				|| contains (root.right, value);
-		}
+	    if (root == null) {
+	        return false;
+	    }
+	    else if (value == root.data) {
+	        return true;
+	    }
+	    else {
+	        return contains (root.left, value) || contains (root.right, value);
+	    }
+	}
+	
+	// Method from Section 17.4
+	private boolean contains(InteTreeNode root, int value) {
+	   if (root == null) {
+	       return false;
+	   }
+	   else if (root.value == root.data) {
+	       return true;
+	   }
+	   else if (root.value < root.data) {
+	       return contains(root.left, value);
+	   }
+	   else { // root.value > root.data
+	       return contains(root.right, value);
+	   }
 	}
 
-	This second version of contains is much less efficient than the one 
-	written in the chapter. It goes both to the left and to the right 
-	recursively to find the value, but this does not take advantage of 
-	the pre-sorted tree. It will have linear O(N) runtime rather than 
-	the faster O(log N) desired runtime of our original method.
+	This version of contains is less efficient than the one written in the 
+	chapter. This version traverses both to the left and to the right 
+	recursively to find the value, instead of taking advantage of the pre-sorted tree.
+	This version is better, it is O(N) versus the method in the chapter being O(log N).
