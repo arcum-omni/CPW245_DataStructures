@@ -1,3 +1,11 @@
+// Travis Eiler
+// CPW 245, Winter '20
+// Assignment #7: Trees
+// Due: Mar 4, 2020
+//
+// The purpose of this program is to find leaves with an in-order traversal.
+// specifically to reinforce our understanding of Trees and LinkedLists.
+
 // Class SearchTree stores and prints a binary search tree of
 // objects of type E.  E must implement the Comparable<E>
 // interface.
