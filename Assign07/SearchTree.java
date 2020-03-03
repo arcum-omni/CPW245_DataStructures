@@ -85,18 +85,21 @@ public class SearchTree<E extends Comparable<E>> {
         getLeaves( leaves, overallRoot );
         return leaves;
     }
+    
     private void getLeaves(LinkedList<E> leaves, SearchTreeNode<E> root ) {
-        // TO DO: implement this method
-        LinkedList<E> empty = new LinkedList();
-        
-        /*
-        Create an empty LinkedList<E> in public LinkedList<E> getLeaves()
-        that calls a private helper method private void getLeaves(LinkedList<E> leaves, SearchTreeNode<E> root)
-        which does an in-order traversal of the tree.
-        When the traversal finds a leaf, that leaf is added to the linked list.
-        The linked list is then returned by the public method to the client code.
-        */
-        
+        // base case
+        if(root == null){
+            return;
+        }
+        // find leaf, when root.left & root.right are null
+        else if (root.left == null && root.right == null){
+            leaves.add(root.data);
+        }
+        // in-order traversal with recursive calls
+        else {
+            getLeaves(leaves, root.left);
+            getLeaves(leaves, root.right);
+        }
     }
 
     private static class SearchTreeNode<E> {
