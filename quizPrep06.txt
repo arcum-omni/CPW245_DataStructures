@@ -1,0 +1,157 @@
+Quiz 6: BJP 17
+
+BJP4 Self-Check 17.15
+
+    Which of the following trees are valid binary search trees?
+    
+    Valid: (a) it is ordered largest to smallest, the abs would be valid, in
+               the chapter this is invalid, however according to Ken's lecture 
+               this is a valid BST.
+           (c) only has one element, it is sorted
+           (e) is in order smallest to largest
+    
+    Invalid: (a) it is ordered largest to smallest, the abs would be valid, in
+                 the chapter this is invalid, however according to Ken's lecture 
+                 this is a valid BST.
+             (b) a duplicate of 18 occurs in a right subtree.
+                 It could only be valid depending upon which convention we adopt.
+                 According to the BST property defined in the chapter, the value
+                 in the left subtree must be <= it's root.
+             (d) k in right subtree is less than the overallroot
+
+
+
+BJP4 Self-Check 17.17
+
+    Suppose that the following elements are added in the specified order to an 
+    empty binary search tree:
+
+    Leia, Boba, Darth, R2D2, Han, Luke, Chewy, Jabba
+    
+                                  +-------+
+                                  | Leia  |
+                       ___________+-------+___________
+                      /                               \
+              +-------+                               +-------+
+              | Boba  |                               | R2D2  |
+              +-------+                               +-------+
+             /         \                             /         \
+    +-------+           +-------+           +-------+           +-------+
+    |       |           | Darth |           | Luke  |           |       |
+    +-------+           +-------+           +-------+           +-------+
+   /         \         /         \         /         \         /         \
++-------+ +-------+ +-------+ +-------+ +-------+ +-------+ +-------+ +-------+
+|       | |       | | Chewy | |  Han  | |       | |       | |       | |       |
++-------+ +-------+ +-------+ +-------+ +-------+ +-------+ +-------+ +-------+
+                                   \
+                                    +-------+
+                                    | Jabba |
+                                    +-------+
+
+    Write the elements of the tree above in the order they would be seen by a 
+    pre-order, in-order, and post-order traversal. Type your solutions with the 
+    elements separated by spaces and/or commas:
+    
+     pre-order:  leia, boba, darth, chewy, han, jabba, r2d2, luke
+      in-order:  boba, chewy, darth, han, jabba, leia, luke, r2d2
+    post-order:  chewy, jabba, han, darth, boba, luke, r2d2, leia
+
+
+
+BJP4 Self-Check 17.19
+
+    Suppose that the following elements are added in the specified order to an 
+    empty binary search tree:
+    
+    Kirk, Spock, Scotty, McCoy, Chekov, Uhuru, Sulu, Khaaaan!
+    
+                          +---------+
+                          |  Kirk   |
+        __________________+---------+___________________
+       /                                                \
+  +---------+                                     +---------+
+  | Chekov  |                                     |  Spock  |
+  +---------+______                         ______+---------+_____
+                   \                       /                      \
+              +---------+             +---------+             +---------+
+              | Khaaaan |             | Scotty  |             |  Uhuru  |
+              +---------+             +---------+             +---------+
+                                     /                       /
+                                +---------+             +---------+
+                                |  McCoy  |             |  Sulu   |
+                                +---------+             +---------+
+    
+    Write the elements of the tree above in the order they would be seen by a 
+    pre-order, in-order, and post-order traversal. Type your solutions with the 
+    elements separated by spaces and/or commas:
+
+     pre-order:  kirk, chekov, khaaaan, spock, scotty, mccoy, uhuru, sulu
+      in-order:  chekov, khaaaan, kirk, mccoy, scotty, spock, sulu, uhuru
+    post-order:  khaaaan, chekov, mccoy, scotty, sulu, uhuru, spock, kirk
+
+
+
+BJP4 Self-Check 17.25
+
+    Rewrite the min and max methods from Self-Check Problem 12 so that they will 
+    work on a BST.  The methods should take advantage of the fact that the tree 
+    is sorted and should not examine nodes unless necessary.
+    
+    BJP4 Self-Check 17.12
+    Write methods min and max that could be added to the IntTree class that 
+    return the smallest/largest values in the tree, respectively.
+    If the tree is empty, the mehtods should throw an IllegalArgumentException.
+    
+    //BJP4 Self-Check 17.12
+        public int min() {
+            if (overallRoot == null) {
+                throw new IllegalStateException("empty tree");
+            }
+            return min(overallRoot);
+        }
+
+        private int min(IntTreeNode root) {
+            if (root.left == null && root.right == null) {
+                return root.data;
+            } else {
+                int minValue = root.data;
+                if (root.left != null) {
+                    minValue = Math.min(minValue, min(root.left));
+                }
+                if (root.right != null) {
+                    minValue = Math.min(minValue, min(root.right));
+                }
+                return minValue;
+            }
+        }
+    
+    //BJP4 Self-Check 17.25
+        public int min() {
+            if (overallRoot == null) {
+                throw new IllegalStateException("empty tree");
+            }
+            return min(overallRoot);
+        }
+
+        private int min(IntTreeNode root) {
+            if (root.left == null) {
+                return root.data;
+            } else {
+                return min(root.left);
+            }
+        }
+
+        public int max() {
+            if (overallRoot == null) {
+                throw new IllegalStateException("empty tree");
+            }
+            return max(overallRoot);
+        }
+
+        private int max(IntTreeNode root) {
+            if (root.right == null) {
+                return root.data;
+            } else {
+                return max(root.right);
+            }
+        }
