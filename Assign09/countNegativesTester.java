@@ -30,10 +30,10 @@ public class countNegativesTester{
         System.out.println( countNegatives( arr04 ));
     }
     
-    public static long countNegatives( int[] a ) {
+    public static long countNegatives( int[] arr ) {
         // https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
         // Stream method:  Type:  Description:
         // count()         long   returns the count of elements in a stream
-        return Arrays.stream(a).filter(n -> n < 0).count();
+        return Arrays.stream(arr).filter(n -> n < 0).count();
     }
 }
