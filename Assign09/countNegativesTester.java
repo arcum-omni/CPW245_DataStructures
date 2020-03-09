@@ -12,7 +12,7 @@
 // but I wanted to be specific about which classes/packages are required to 
 // run this program.
 import java.util.Arrays;
-import java.util.stream.*;
+import java.util.stream.Collectors;
 
 public class countNegativesTester{
     public static void main( String[] args ) {
