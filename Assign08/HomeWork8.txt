@@ -48,3 +48,34 @@
 
 
 // BJP4 Exercise 18.7: toStringHashIntSet
+    public int[] toArray() {
+        int[] result = new int[size];
+        int index = 0;
+
+        for(int i = 0; i < elementData.length; i++) {
+            Node current = elementData[i];
+
+            while(current != null) {
+                result[index] = current.data;
+                index++;
+                current = current.next;
+            }
+        }
+
+        return result;
+    }
+
+    public String toString() {
+        int[] array = toArray();
+        String newString = "[";
+
+        for (int i=0; i<size; i++) {
+            newString += array[i];
+            if (i < size -1) {
+                newString += ", ";
+            }
+        }
+        
+        newString += "]";
+        return newString;
+    }
