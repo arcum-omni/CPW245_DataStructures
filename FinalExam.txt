@@ -1,0 +1,110 @@
+// Travis Eiler
+// CPW 245, Winter '20
+// Final Exam
+// Due: Mar 18, 2020
+
+
+// BJP5 Exercise 14.13: expunge
+    public void expunge (Stack<Integer> stack) {
+        Stack<Integer> stackTwo = new Stack<Integer>();
+        int origSize = stack.size();
+        int toDiscard;
+        
+        if (origSize == 0) {
+            return;
+        }
+        
+        else {
+            stackTwo.push(stack.pop());
+            
+            while (!stack.isEmpty()) {
+                if (stack.peek() < stackTwo.peek()) {
+                    toDiscard = stack.pop();
+                }
+                else {
+                    stackTwo.push(stack.pop());
+                }
+            }
+
+            while (!stackTwo.isEmpty()) {
+                stack.push(stackTwo.pop());
+            }
+        }
+    }
+
+
+// BJP5 Exercise 14.14: reverseFirstK
+    public void reverseFirstK(int k, Queue<Integer> queue) {
+        Stack<Integer> stack = new Stack<Integer>();
+        int size;
+        
+        if(queue == null || k > queue.size())
+            throw new IllegalArgumentException();
+            
+        if(k <= 0)
+            return;
+            
+        size = queue.size();
+        
+        for(int i = 0; i < k; i++)
+            stack.push(queue.remove());
+            
+        while(!stack.isEmpty())
+            queue.add(stack.pop());
+            
+        for(int i = 0; i < size - k; i++)
+            queue.add(queue.remove());
+    }
+
+
+// BJP5 Exercise 16.13: transferFrom
+    public void transferFrom(LinkedIntList list) {
+        if (front == null) {
+            front = list.front;
+        }
+        
+        else {
+            ListNode current = front;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = list.front;
+        }
+        
+        list.front = null;
+    }
+
+
+// BJP5 Exercise 17.18 inOrderList
+    public List<Integer> inOrderList() {
+        List<Integer> list = new LinkedList<Integer>();
+        inOrderList(overallRoot, list);
+        return list;
+    }
+
+    private void inOrderList(IntTreeNode node, List<Integer> list) {
+        if(node == null)
+            return;
+            
+        inOrderList(node.left, list);
+        list.add(node.data);
+        inOrderList(node.right, list);
+    }
+
+
+// BJP5 Exercise 18.6: toArrayHashIntSet
+    public int[] toArray() {
+        int[] result = new int[size];
+        int index = 0;
+
+        for(int i = 0; i < elementData.length; i++) {
+            Node current = elementData[i];
+
+            while(current != null) {
+                result[index] = current.data;
+                index++;
+                current = current.next;
+            }
+        }
+        return result;
+    }
